@@ -43,20 +43,20 @@ namespace StockMarket
             return list[key].UpdatedStatus();
         }
 
-        public bool SetNewOrDeletedStatus(int key)
+        public void SetNewOrDeletedStatus(int key)
         {
             if (list[key].NewOrDeletedStatus() == true)
-                return false;
+                list[key].newOrDeletedStatus = false;
             else
-                return true;
+                list[key].newOrDeletedStatus = true;
         }
 
-        public bool SetUpdatedStatus(int key)
+        public void SetUpdatedStatus(int key)
         {
             if (list[key].UpdatedStatus() == true)
-                return false;
+                list[key].updatedStatus = false;
             else
-                return true;
+                list[key].updatedStatus = true;
         }
 
         public string UserName(int key)
@@ -77,8 +77,8 @@ namespace StockMarket
                     result += "(subscribed to all the news)" + "\n";
                 else { 
                         if (i.Value.NewOrDeletedStatus() == false)
-                            result += "(unsubscribed from new/deleted virtual coins news )";
-                        else result += "(subscribed to new/deleted virtual coins news ) ";
+                            result += "(unsubscribed from new/deleted virtual coins news)";
+                        else result += "(subscribed to new/deleted virtual coins news) ";
 
                         if (i.Value.UpdatedStatus() == false)
                             result += "(unsubscribed from updated virtual coins news)" + "\n";
