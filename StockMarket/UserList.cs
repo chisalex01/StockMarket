@@ -33,14 +33,30 @@ namespace StockMarket
             return this;
         }
 
-        public bool NewOrDeleteStatus(int key)
+        public bool NewOrDeletedStatus(int key)
         {
-            return list[key].GetNewOrDeletedStatus();
+            return list[key].NewOrDeletedStatus();
         }
 
         public bool UpdatedStatus(int key)
         {
-            return list[key].GetUpdatedStatus();
+            return list[key].UpdatedStatus();
+        }
+
+        public bool SetNewOrDeletedStatus(int key)
+        {
+            if (list[key].NewOrDeletedStatus() == true)
+                return false;
+            else
+                return true;
+        }
+
+        public bool SetUpdatedStatus(int key)
+        {
+            if (list[key].UpdatedStatus() == true)
+                return false;
+            else
+                return true;
         }
 
         public string UserName(int key)
@@ -55,16 +71,16 @@ namespace StockMarket
             {
                 result += i.Key + ". " + i.Value.GetLast() + " " + i.Value.GetFirst() + " ";
 
-                if (i.Value.GetNewOrDeletedStatus() == false && i.Value.GetUpdatedStatus() == false)
+                if (i.Value.NewOrDeletedStatus() == false && i.Value.UpdatedStatus() == false)
                     result += "(unsubscribed from all the news)" + "\n";
-                else if(i.Value.GetNewOrDeletedStatus() == true && i.Value.GetUpdatedStatus() == true)
+                else if(i.Value.NewOrDeletedStatus() == true && i.Value.UpdatedStatus() == true)
                     result += "(subscribed to all the news)" + "\n";
                 else { 
-                        if (i.Value.GetNewOrDeletedStatus() == false)
+                        if (i.Value.NewOrDeletedStatus() == false)
                             result += "(unsubscribed from new/deleted virtual coins news )";
                         else result += "(subscribed to new/deleted virtual coins news ) ";
 
-                        if (i.Value.GetUpdatedStatus() == false)
+                        if (i.Value.UpdatedStatus() == false)
                             result += "(unsubscribed from updated virtual coins news)" + "\n";
                         else result += "(subscribed to updated virtual coins news)" + "\n";
                     }

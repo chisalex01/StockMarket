@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace StockMarket
+﻿namespace StockMarket
 {
     public class User
     {
@@ -13,26 +11,8 @@ namespace StockMarket
         {
             last = lastName;
             first = firstName;
-            newOrDeletedStatus = false;
-            updatedStatus = false;
-        }
-
-        public void NewOrDeletedStatus(string newOrDeletedStatus)
-        {
-            if (newOrDeletedStatus == "subscribed")
-                this.newOrDeletedStatus = false;
-            else if (newOrDeletedStatus == "unsubscribed")
-                this.newOrDeletedStatus = true;
-            else Console.WriteLine("");
-        }
-
-        public void UpdatedStatus(string updatedStatus)
-        {
-            if (updatedStatus == "subscribed")
-                this.updatedStatus = false;
-            else if (updatedStatus == "unsubscribed")
-                this.newOrDeletedStatus = true;
-            else Console.WriteLine("");
+            newOrDeletedStatus = true;
+            updatedStatus = true;
         }
 
         public string GetLast()
@@ -45,12 +25,12 @@ namespace StockMarket
             return first;
         }
 
-        public bool GetNewOrDeletedStatus()
+        public bool NewOrDeletedStatus()
         {
             return newOrDeletedStatus;
         }
 
-        public bool GetUpdatedStatus()
+        public bool UpdatedStatus()
         {
             return updatedStatus;
         }

@@ -280,7 +280,7 @@ namespace StockMarket
                                     Console.WriteLine(userList.UserName(keyUserNotifications) + "'s notifications:\n");
 
                                     Console.WriteLine("News about new or deleted coins:");
-                                    if (userList.NewOrDeleteStatus(keyUserNotifications) == true)
+                                    if (userList.NewOrDeletedStatus(keyUserNotifications) == true)
                                         Console.WriteLine(newOrDeletedList + "\n");
                                     else Console.WriteLine("This user is not subscribed to this list...\n");
 
@@ -298,16 +298,47 @@ namespace StockMarket
 
                                 case "2":
                                     Console.Clear();
-                                    Console.WriteLine("Changing the status of " + userList.UserName(keyUserNotifications) + "'s subscriptions");
-                                    Console.Write("Insert new first name: ");
-                                    userList.UpdateFirstName(keyUserNotifications, Console.ReadLine());
+                                    Console.WriteLine("Changing the status of " + userList.UserName(keyUserNotifications) + "'s subscriptions\n");
+                                    if (userList.NewOrDeletedStatus(keyUserNotifications) == true)
+                                        Console.WriteLine("New or removed virtual coins news: subscribed");
+                                    else Console.WriteLine("New or removed virtual coins news: unsubscribed");
 
-                                    Console.WriteLine("\r\nPress ENTER to go back");
-                                    if (Console.ReadLine() == "")
-                                        return true;
-                                    else
-                                        Error();
-                                    return true;
+                                    if (userList.UpdatedStatus(keyUserNotifications) == true)
+                                        Console.WriteLine("Updated virtual coins news: subscribed\n");
+                                    else Console.WriteLine("Updated virtual coins news: unsubscribed\n");
+
+                                    Console.WriteLine("1) Change status for new or removed virtual coins ");
+                                    Console.WriteLine("2) Change status for updated virtual coins");
+                                    Console.WriteLine("3) Change status for both");
+
+
+                                    Console.WriteLine("\r\n4) Back");
+
+                                    Console.Write("\r\nSelect an option: ");
+
+                                    switch (Console.ReadLine())
+                                    {
+                                        case "1":
+                                            userList.SetNewOrDeletedStatus(keyUserNotifications);
+                                            return true;
+
+                                        case "2":
+                                            userList.SetUpdatedStatus(keyUserNotifications);
+                                            return true;
+
+                                        case "3":
+                                            userList.SetNewOrDeletedStatus(keyUserNotifications);
+                                            userList.SetUpdatedStatus(keyUserNotifications);
+                                            return true;
+
+                                        case "4":
+                                            Menu();
+                                            return false;
+
+                                        default:
+                                            Error();
+                                            return true;
+                                    }
 
                                 case "3":
                                     Menu();
