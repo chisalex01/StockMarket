@@ -2,9 +2,9 @@
 {
     public class Coin
     {
-        public string name { get; set; }
+        public string name;
 
-        public double value { get; set; }
+        public double value;
 
         public Coin(string Name, double Value)
         {
@@ -21,13 +21,13 @@
             return value;
         }
 
-        public void setName(string name)
+        public void SetName(string name)
         {
             this.name = name;
         }
 
         
-        public void setValue(double value)
+        public void SetValue(double value)
         {
             this.value = value;
         }

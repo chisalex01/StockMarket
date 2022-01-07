@@ -55,11 +55,11 @@ namespace StockMarket
             return updatedStatus;
         }
 
-        public void setLast(string name)
+        public void SetLast(string name)
         {
             this.last = name;
         }
-        public void setFirst(string name)
+        public void SetFirst(string name)
         {
             this.first = name;
         }

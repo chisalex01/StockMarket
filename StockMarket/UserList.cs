@@ -23,14 +23,29 @@ namespace StockMarket
 
         public UserList UpdateLastName(int key, string name)
         {
-            list[key].setLast(name);
+            list[key].SetLast(name);
             return this;
         }
 
         public UserList UpdateFirstName(int key, string name)
         {
-            list[key].setFirst(name);
+            list[key].SetFirst(name);
             return this;
+        }
+
+        public bool NewOrDeleteStatus(int key)
+        {
+            return list[key].GetNewOrDeletedStatus();
+        }
+
+        public bool UpdatedStatus(int key)
+        {
+            return list[key].GetUpdatedStatus();
+        }
+
+        public string UserName(int key)
+        {
+            return list[key].GetLast() + " " + list[key].GetFirst();
         }
 
         public override string ToString()
@@ -41,7 +56,7 @@ namespace StockMarket
                 result += i.Key + ". " + i.Value.GetLast() + " " + i.Value.GetFirst() + " ";
 
                 if (i.Value.GetNewOrDeletedStatus() == false && i.Value.GetUpdatedStatus() == false)
-                    result += "(unsubscribed from any kind of news)" + "\n";
+                    result += "(unsubscribed from all the news)" + "\n";
                 else if(i.Value.GetNewOrDeletedStatus() == true && i.Value.GetUpdatedStatus() == true)
                     result += "(subscribed to all the news)" + "\n";
                 else { 

@@ -23,14 +23,19 @@ namespace StockMarket
 
         public CoinList UpdateCoinName(int key, string name)
         {
-            list[key].setName(name);
+            list[key].SetName(name);
             return this;
         }
 
         public CoinList UpdateCoinValue(int key, double value)
         {
-            list[key].setValue(value);
+            list[key].SetValue(value);
             return this;
+        }
+
+        public string CoinName(int key)
+        {
+            return list[key].GetName();
         }
 
         public override string ToString()
